@@ -1,5 +1,5 @@
 modules:
-  oauth2:
+  intro:
     name: OAuth 2
   roles:
     name: Roles
