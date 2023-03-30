@@ -1,0 +1,33 @@
+modules:
+  intro:
+    name: Instruções do laboratório
+  basics:
+    name: Introdução com Quarkus
+  cdi:
+    name: Injeção de dependência
+  testing:
+    name: Testando Aplicativos Quarkus
+  debugging:
+    name: Debugando Aplicativos Quarkus
+  native:
+    name: Building Native Quarkus Apps
+  cloudnative:
+    name: Construindo Aplicativos Nativos Quarkus
+  deploy:
+    name: Implantando na nuvem
+  extensions:
+    name: Usando sas extensões de Quarkus
+  panache:
+    name: Hibernate ORM com Panache
+  openapi:
+    name: Documentando e Testando APIs
+  messaging:
+    name: Event-driven Messaging
+  kafka:
+    name: Dados de Streaming com Quarkus e Kafka
+  monitoring:
+    name: Monitorando com Prometheus e Grafana
+  tracing:
+    name: Rastreando Aplicativos com Quarkus
+  security:
+    name: Protegendo as APIs em Quarkus

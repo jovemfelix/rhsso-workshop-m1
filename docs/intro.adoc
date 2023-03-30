@@ -1,0 +1,85 @@
+:experimental:
+:imagesdir: images
+
+= xxx
+
+= O que é Quarkus??
+
+image::logo.png[quarkus-logo, 900]
+
+Quarkus é um framework Java nativo do Kubernetes projetado para GraalVM e OpenJDK HotSpot, criado a partir das melhores bibliotecas e padrões do Java. Possui um tempo de inicialização incrivelmente rápido, uso de memória de RSS extremamente baixo (não apenas tamanho do heap!), oferecendo escala quase instantânea e utilização de memória de alta densidade em plataformas de orquestração de contêineres, como o Kubernetes. O Quarkus usa uma técnica chamada https://quarkus.io/container-first[compile time boot^] e oferece um modelo de programação imperativo e reativo unificado, além de vários outros recursos de desenvolvedor, como Live Reload, para trazer verdadeira _alegria_ ao seu desenvolvimento.
+
+A *Red Hat* oferece o https://access.redhat.com/products/quarkus[Red Hat Build of Quarkus(RHBQ)^] totalmente suportado, com suporte e manutenção do Quarkus. Neste workshop, você usará o Quarkus para desenvolver microserviços nativos do Kubernetes e implantá-los no OpenShift. O Quarkus é um dos runtimes incluídos em https://www.redhat.com/en/products/runtimes[Red Hat Runtimes^]. https://access.redhat.com/documentation/en-us/red_hat_build_of_quarkus[Obtenha mais informações sobre o RHBQ^].
+
+Ao longo deste laboratório, você descobrirá como o Quarkus pode tornar o desenvolvimento de aplicativos nativos da nuvem mais rápido e produtivo.
+
+[source,properties,role="copypaste"]
+----
+mp.jwt.verify.publickey.location={{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/certs<1>
+mp.jwt.verify.issuer={{KEYCLOAK_URL}}/auth/realms/quarkus<2>
+quarkus.smallrye-jwt.auth-mechanism=MP-JWT<3>
+quarkus.smallrye-jwt.realm-name=quarkus
+quarkus.smallrye-jwt.enabled=true
+----
+
+= Primeiro passo: Defina seu nome de usuário!
+
+Olhe na caixa no topo da sua tela. Seu nome de usuário já está definido? Se sim, ele parecerá assim:
+
+image::alreadyset.png[Set User ID above, 700]
+
+Se o nome do seu usuário estiver definido corretamente, você pode prosseguir. *Caso contrário, na caixa acima, digite o ID do usuário que foi atribuído a você* assim:
+
+image::setuser.png[Set User ID above, 700]
+
+Isso irá personalizar os links e códigos de `copiar/colar` para este workshop. Se você digitar acidentalmente o nome de usuário errado, basta clicar no ícone de reciclagem verde para redefinir.
+
+= Clique para Copiar
+
+Você verá vários blocos de `código` e `comando` ao longo destes exercícios que podem ser copiados/colados diretamente *clicando em qualquer lugar do bloco de texto*:
+
+[source,java,role="copypaste"]
+----
+/* A sample Java snippet that you can copy/paste by clicking */
+public class CopyMeDirectly {
+    public static void main(String[] args) {
+        System.out.println("You can copy this whole class with a click!");
+    }
+}
+----
+
+Basta clicar uma vez e todo o bloco será copiado para a área de transferência, pronto para ser colado com kbd:[CTRL+V] (ou kbd:[Command+V] no Mac OS).
+
+Existem também comandos de shell Linux que podem ser copiados e colados em um Terminal no seu Ambiente de Desenvolvimento:
+
+[source,sh,role="copypaste"]
+----
+echo "Este é um comando do shell que você pode copiar/colar clicando"
+----
+
+= Acesse seu Ambiente de Desenvolvimento
+
+Você estará usando o Red Hat CodeReady Workspaces, um ambiente de desenvolvimento integrado online baseado no https://www.eclipse.org/che/[CodeReady Workspaces^]. As *alterações nos arquivos são salvas automaticamente a cada poucos segundos*, portanto, você não precisa salvar explicitamente as alterações.
+
+Para começar, {{CHE_URL}}[acesse a instância do CodeReady Workspaces^] e faça login usando o nome de usuário e a senha que lhe foram atribuídos:
+
+* *Usuário*: `{{ USER_ID }}`
+* *Senha*: `{{ CHE_USER_PASSWORD }}`
+
+image::che-login.png[login,800]
+
+Depois de fazer o login, você será direcionado para o seu painel pessoal. Clique no nome do espaço de trabalho pré-criado à esquerda, como mostrado abaixo (o nome será diferente dependendo do número atribuído a você).
+
+image::crw-landing.png[cdw, 800]
+
+Você também pode clicar no nome do espaço de trabalho no centro e, em seguida, clicar no namespace `{{ USER_ID}}-namespace` verde que diz _Open_ (o qual se encontra no canto inferior direito da tela):
+
+image::crw-landing-start.png[cdw, 800]
+
+Após um ou dois minutos, você será direcionado para o espaço de trabalho:
+
+image::che-workspace.png[cdw, 800]
+
+Os usuários das IDEs (Eclipse, IntelliJ IDEA ou Visual Studio Code) verão uma interface familiar: um navegador de projetos/arquivos à esquerda, um editor de código à direita e um terminal na parte inferior. Você usará todos esses recursos durante o curso deste workshop, então mantenha esta guia do navegador aberta durante todo o processo. *Se as coisas ficarem estranhas, você pode simplesmente recarregar a guia do navegador para atualizar a visualização*.
+
+Pronto? Vamos lá!

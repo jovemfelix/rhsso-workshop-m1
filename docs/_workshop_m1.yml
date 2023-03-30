@@ -1,0 +1,22 @@
+---
+id: rhsso-lab
+name: Basic RHSSO Hands-on Lab (Version 2023-03-29)
+
+vars:
+  ROUTE_SUBDOMAIN:
+  MASTER_URL:
+  CONSOLE_URL:
+  KEYCLOAK_URL: "https://{{ OPENSHIFT_USER_NAME }}{{ KEYCLOAK_PRE_URL }}"
+  OPENSHIFT_USER_NAME: userNN
+  OPENSHIFT_USER_PASSWORD: passNN
+
+modules:
+  activate:
+  - intro
+  - basics
+  - cdi
+  - testing
+  - debugging
+  - native
+  - cloudnative
+  - deploy
