@@ -15,8 +15,8 @@ Ao longo deste laboratório, você descobrirá como o Quarkus pode tornar o dese
 
 [source,properties,role="copypaste"]
 ----
-mp.jwt.verify.publickey.location={{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/certs<1>
-mp.jwt.verify.issuer={{KEYCLOAK_URL}}/auth/realms/quarkus<2>
+mp.jwt.verify.publickey.location=https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus/protocol/openid-connect/certs<1>
+mp.jwt.verify.issuer=https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus<2>
 quarkus.smallrye-jwt.auth-mechanism=MP-JWT<3>
 quarkus.smallrye-jwt.realm-name=quarkus
 quarkus.smallrye-jwt.enabled=true

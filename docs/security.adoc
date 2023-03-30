@@ -28,8 +28,8 @@ Some configuration of the extension is required. Add this to your `application.p
 
 [source,properties,role="copypaste"]
 ----
-mp.jwt.verify.publickey.location={{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/certs<1>
-mp.jwt.verify.issuer={{KEYCLOAK_URL}}/auth/realms/quarkus<2>
+mp.jwt.verify.publickey.location=https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus/protocol/openid-connect/certs<1>
+mp.jwt.verify.issuer=https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus<2>
 quarkus.smallrye-jwt.auth-mechanism=MP-JWT<3>
 quarkus.smallrye-jwt.realm-name=quarkus
 quarkus.smallrye-jwt.enabled=true
@@ -171,7 +171,7 @@ Get a token for user `alice` with this command:
 [source,sh,role="copypaste"]
 ----
 export ALICE_TOKEN=$(\
-    curl -s -X POST {{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/token \
+    curl -s -X POST https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=alice&password=alice&grant_type=password' | jq --raw-output '.access_token' \
@@ -234,7 +234,7 @@ Obtain an Admin token:
 [source,sh,role="copypaste"]
 ----
 export ADMIN_TOKEN=$(\
-    curl -s -X POST {{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/token \
+    curl -s -X POST https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=admin&password=admin&grant_type=password' | jq --raw-output '.access_token' \
@@ -260,7 +260,7 @@ Set-Cookie: 2a1b392100b8b2cb3705c68f4ecbaf66=1b3560b80b9fad566e105aff1f31f880; p
 Cache-control: private
 
 hello admin, isSecure: false, authScheme: Bearer, hasJWT: true
-Injected issuer: ["{{KEYCLOAK_URL}}/auth/realms/quarkus"]
+Injected issuer: ["https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus"]
 
 Claim Name: [sub] Claim Value: [af134cab-f41c-4675-b141-205f975db679]
 Claim Name: [groups] Claim Value: [[admin, user]]
@@ -321,7 +321,7 @@ Next, add these to your `application.properties` for Keycloak:
 [source,none,role="copypaste"]
 ----
 # OIDC config
-quarkus.oidc.auth-server-url={{ KEYCLOAK_URL }}/auth/realms/quarkus
+quarkus.oidc.auth-server-url=https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus
 quarkus.oidc.client-id=backend-service
 quarkus.oidc.credentials.secret=secret
 quarkus.http.cors=true
@@ -415,7 +415,7 @@ Refresh the admin token (it may have expired):
 [source,sh,role="copypaste"]
 ----
 export ADMIN_TOKEN=$(\
-    curl -s -X POST {{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/token \
+    curl -s -X POST https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=admin&password=admin&grant_type=password' | jq --raw-output '.access_token' \
@@ -447,7 +447,7 @@ To access the confidential endpoint, you should obtain an access token for user 
 [source,sh,role="copypaste"]
 ----
 export JDOE_TOKEN=$(\
-    curl -s -X POST {{KEYCLOAK_URL}}/auth/realms/quarkus/protocol/openid-connect/token \
+    curl -s -X POST https://{{ USER_ID }}{{ KEYCLOAK_PRE_URL }}/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=jdoe&password=jdoe&grant_type=password' | jq --raw-output '.access_token' \
