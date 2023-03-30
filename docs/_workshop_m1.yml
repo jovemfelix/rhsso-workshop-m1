@@ -12,11 +12,10 @@ vars:
 
 modules:
   activate:
-  - intro
-  - basics
-  - cdi
+  - oauth2
+  - roles
+  - clients
+  - authorizationgrants
   - testing
-  - debugging
-  - native
   - cloudnative
   - deploy

@@ -1,16 +1,14 @@
 modules:
-  intro:
-    name: Instruções do laboratório
-  basics:
-    name: Introdução com Quarkus
-  cdi:
-    name: Injeção de dependência
+  oauth2:
+    name: OAuth 2
+  roles:
+    name: Roles
   testing:
-    name: Testando Aplicativos Quarkus
-  debugging:
-    name: Debugando Aplicativos Quarkus
-  native:
-    name: Building Native Quarkus Apps
+    name: Tokens
+  clients:
+    name: Clients
+  authorizationgrants:
+    name: Authorization Grants
   cloudnative:
     name: Construindo Aplicativos Nativos Quarkus
   deploy:
