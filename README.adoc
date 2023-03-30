@@ -6,3 +6,5 @@ module_type=m1
 rhsso-workshop-{{ module_type }}
 docs/_workshop_{{ module_type }}.yml
 ```
+
+> Must have the `intro` module

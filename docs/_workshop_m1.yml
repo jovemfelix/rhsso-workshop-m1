@@ -12,7 +12,7 @@ vars:
 
 modules:
   activate:
-  - oauth2
+  - intro
   - roles
   - clients
   - authorizationgrants
