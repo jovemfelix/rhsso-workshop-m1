@@ -13,7 +13,7 @@ ROUTE_SUBDOMAIN=apps.cluster-6lc2p.6lc2p.sandbox921.opentlc.com
 OPENSHIFT_USER_PASSWORD=openshift
 WORKSHOPS_URLS="file:///app-data/_workshop_m1.yml"
 
-docker run -it -p 8080:8080 --rm -v ${WORKDIR}/docs:/app-data \
+docker run -it -p 9000:8080 --rm -v ${WORKDIR}/docs:/app-data \
 -e CONSOLE_URL=${CONSOLE_URL} \
 -e CONTENT_URL_PREFIX=${CONTENT_URL_PREFIX} \
 -e KEYCLOAK_PRE_URL=${KEYCLOAK_PRE_URL} \
@@ -22,5 +22,5 @@ docker run -it -p 8080:8080 --rm -v ${WORKDIR}/docs:/app-data \
 -e OPENSHIFT_USER_PASSWORD=${OPENSHIFT_USER_PASSWORD} \
 -e ROUTE_SUBDOMAIN=${ROUTE_SUBDOMAIN} \
 -e WORKSHOPS_URLS=${WORKSHOPS_URLS} \
-    quay.io/jamesfalkner/workshopper
+    osevg/workshopper:latest
 
