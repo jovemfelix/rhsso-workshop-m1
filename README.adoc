@@ -8,3 +8,6 @@ docs/_workshop_{{ module_type }}.yml
 ```
 
 > Must have the `intro` module
+
+= Getting Started
+* https://github.com/jovemfelix/workshopper/tree/master/docs[workshopper]
